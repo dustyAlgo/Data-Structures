@@ -8,25 +8,38 @@ class teacher{
 
     public:
 
-    teacher(){
-        dept = "\nPsychology";
+    teacher(string name, string dept, double ID){
+        this->name = name;
+        this->dept = dept;
+        IDptr = new double;
+        *IDptr = ID;
     }
+    teacher(teacher &obj){
+        this->name = obj.name;
+        this->dept = obj.dept;
+        IDptr = new double;
+        *IDptr = *(obj.IDptr);
+    }
+        
     string name;
     string dept;
+    double* IDptr;
 
-    void setSalary(double s){
-        salary = s; //as salary is private so the same class can access it
-    }
-    double getSalary(){
-        return salary;
+    void getInfo(){
+       cout<<"name: "<<name<<endl;
+       cout<<"dept: "<<dept<<endl;
+       cout<<"id: "<<*IDptr<<endl;
     }
 };
 
 int main(){
-    teacher t1;
-    t1.setSalary(2300.0);
-    cout<<t1.getSalary();
-    cout<<t1.dept;
+    teacher t1("rahul", "CSE", 0.1);
+    teacher t2(t1);
+    t2.name = "Ram";
+    t1.getInfo();
+    *(t2.IDptr) = 0.2;
+    t2.getInfo();
+    t1.getInfo();
     return 0;
 
 }
