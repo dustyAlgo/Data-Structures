@@ -10,6 +10,10 @@ int main() {
     for(int i = 1; i<n; i++){
         fact = fact * (n-i);
     }
-    cout << fact;
+    cout << fact<<endl;
+
+    string x = "@", y="#";
+    string conc = x+y;
+    cout<<"concatinatio: "<<conc<<endl; 
     return 0;
 }

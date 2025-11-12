@@ -2,35 +2,28 @@
 #include <string>
 using namespace std;
 
-class person{
-    private:
-    double salary;
-
-    public:
+class Student{
+public:
     string name;
-    int age;
+    int rollNo;
 };
-class employe:public person{
-      
-    public:
+class Teacher{
+public:
     int empID;
-    void setSalary(double s){
-        salary = s;
-    }
-    void getInfo(){
-        cout<<"name: "<<name<<endl;
-        cout<<"Age: "<<age<<endl;
-        cout<<"EmpID: "<<empID<<endl;
-        cout<<"salary: "<<salary<<endl;
-    }
+    string subject;
+};
+class TA:public Student, public Teacher{
+public:
+    string subject;
 };
 
 int main(){
-    employe e1;
-    e1.name = "Ram";
-    e1.age = 23;
-    e1.empID = 0102;
-    e1.getInfo();
+    int x=4, y=5;
+    TA t1;
+    t1.Teacher::subject = "Physics";
+    t1.TA::subject = "English";
+    cout<<"TA subject: "<<t1.TA::subject<<endl;;
+    cout<<"Teacher subject: "<<t1.Teacher::subject;
     return 0;
 
 }
